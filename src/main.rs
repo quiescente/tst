@@ -1,3 +1,8 @@
+use std::time::SystemTime;
+
 fn main() {
-    println!("Hello, world!");
+    match SystemTime::now().duration_since(SystemTime::UNIX_EPOCH) {
+        Ok(n) => println!("{}", n.as_millis()),
+        Err(err) => panic!("{:?}", err),
+    }
 }
